@@ -70,6 +70,8 @@ func _change_ip_type(id):
 	else:
 		ip_type = IP.TYPE_ANY
 		b_ip_type.set_text("ANY")
+	_tcp.set_ip_type(ip_type)
+	_udp.set_ip_type(ip_type)
 
 func _change_proto_type(id):
 	if _connected:

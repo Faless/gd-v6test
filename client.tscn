@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://script/client.gd" type="Script" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends RichTextLabel\nfunc _ready():\n\tset_scroll_follow(true)"
 
 [node name="Client" type="Control"]
 
@@ -261,6 +265,7 @@ margin/bottom = -10.0
 bbcode/enabled = false
 bbcode/bbcode = ""
 visible_characters = -1
+script/script = SubResource( 1 )
 
 [connection signal="toggled" from="Panel/config/connect" to="." method="_on_connect_pressed"]
 

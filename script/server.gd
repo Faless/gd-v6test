@@ -65,14 +65,14 @@ func _process(delta):
 				# Check if new client
 				var found = false
 				for c in _clients:
-					if c[0] == _udp.get_packet_host() and c[1] == _udp.get_packet_port():
+					if c[0] == _udp.get_packet_ip() and c[1] == _udp.get_packet_port():
 						found = true
 						break
 				if not found:
 					print("Adding client")
-					_clients.append(_udp.get_packet_host(), _udp.get_packet_port())
+					_clients.append([_udp.get_packet_ip(), _udp.get_packet_port()])
 				# Append message
-				msgs.append(_udp.get_packet_host() + ":" + str(_udp.get_packet_port()) + " > " + pkt + "\n")
+				msgs.append(_udp.get_packet_ip() + ":" + str(_udp.get_packet_port()) + " > " + pkt + "\n")
 		for c in _clients:
 			for msg in msgs:
 				_udp.set_send_address(c[0], c[1])
@@ -92,6 +92,8 @@ func _change_ip_type(id):
 	else:
 		ip_type = IP.TYPE_ANY
 		b_ip_type.set_text("ANY")
+	_tcp.set_ip_type(ip_type)
+	_udp.set_ip_type(ip_type)
 
 func _change_proto_type(id):
 	if _connected:
