@@ -11,6 +11,7 @@ onready var e_host = get_node("Panel/config/host/LineEdit")
 onready var e_port = get_node("Panel/config/port/LineEdit")
 onready var e_send = get_node("Panel/msg/send/LineEdit")
 
+var _waiting = false
 var _connected = false
 
 var _udp = PacketPeerUDP.new()
@@ -34,16 +35,21 @@ func _ready():
 	popup.connect("item_pressed", self, "_change_proto_type")
 
 func _process(delta):
-	if not _connected:
-		return
 	if proto == TCP:
-		if not (_tcp.get_status() == StreamPeerTCP.STATUS_CONNECTED or _tcp.get_status() == StreamPeerTCP.STATUS_CONNECTING):
+		if _tcp.get_status() == StreamPeerTCP.STATUS_CONNECTING:
+			_waiting = true
+		elif _tcp.get_status() == StreamPeerTCP.STATUS_CONNECTED:
+			if _waiting:
+				l_log.add_text("Connected!\n")
+				_waiting = false
+			while _tcp_p.get_available_packet_count() > 0:
+				var pkt = _tcp_p.get_var()
+				if typeof(pkt) == TYPE_STRING:
+					l_log.add_text(pkt + "\n")
+		else:
+			print("disconnect")
 			do_disconnect()
 			return
-		while _tcp_p.get_available_packet_count() > 0:
-			var pkt = _tcp_p.get_var()
-			if typeof(pkt) == TYPE_STRING:
-				l_log.add_text(pkt + "\n")
 	else:
 		while _udp.get_available_packet_count() > 0:
 			var pkt = _udp.get_var()
@@ -85,7 +91,7 @@ func _on_connect_pressed(pressed):
 func do_connect():
 	var host = e_host.get_text()
 	var port = e_port.get_text()
-	var ip_str = host if host.is_valid_ip_address() else host + " (" + IP.resolve_hostname(host) + ") "
+	var ip_str = host if host.is_valid_ip_address() else host + " (" + IP.resolve_hostname(host, ip_type) + ") "
 	if proto == TCP:
 		var err = _tcp.connect(e_host.get_text(), int(e_port.get_text()))
 		if err == OK:
@@ -104,6 +110,7 @@ func do_connect():
 	l_log.add_text("\n")
 	if not _connected:
 		do_disconnect()
+		return
 	set_process(true)
 
 func do_disconnect():
@@ -124,7 +131,7 @@ func _on_send_pressed():
 		return
 	var err = OK
 	if proto == TCP:
-		if _tcp.is_connected():
+		if not _tcp.is_connected():
 			err = ERR_UNAVAILABLE
 		else:
 			err =_tcp_p.put_var(data)
