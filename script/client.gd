@@ -123,6 +123,7 @@ func do_disconnect():
 		_udp.close()
 	l_log.add_text("Disconnected\n")
 	_connected = false
+	_waiting = true
 	get_node("Panel/config/connect").set_pressed(false)
 
 func _on_send_pressed():

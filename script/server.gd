@@ -78,6 +78,9 @@ func _process(delta):
 				_udp.set_send_address(c[0], c[1])
 				_udp.put_var(msg)
 		pass
+	for m in msgs:
+		l_log.add_text(m)
+		l_log.add_text("\n")
 
 func _change_ip_type(id):
 	if _connected:
@@ -120,6 +123,7 @@ func do_stop():
 			c[1].disconnect()
 	else:
 		_udp.close()
+	_clients.clear()
 	l_log.add_text("Disconnected\n")
 	_connected = false
 	get_node("Panel/config/listen").set_pressed(false)
