@@ -1,0 +1,243 @@
+[gd_scene format=1]
+
+[node name="Client" type="Node"]
+
+[node name="Panel" type="Panel" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="config" type="HBoxContainer" parent="Panel"]
+
+editor/display_folded = true
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 20.0
+margin/top = 0.0
+margin/right = 14.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="host" type="HBoxContainer" parent="Panel/config"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 228.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="Label" type="Label" parent="Panel/config/host"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 13.0
+margin/right = 30.0
+margin/bottom = 27.0
+text = "Host"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/config/host"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 34.0
+margin/top = 0.0
+margin/right = 228.0
+margin/bottom = 40.0
+text = "localhost"
+placeholder/text = "host"
+placeholder/alpha = 0.6
+expand_to_len = false
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="port" type="HBoxContainer" parent="Panel/config"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 232.0
+margin/top = 0.0
+margin/right = 460.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="Label" type="Label" parent="Panel/config/port"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 27.0
+text = "Port"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/config/port"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 30.0
+margin/top = 0.0
+margin/right = 228.0
+margin/bottom = 40.0
+text = "localhost"
+placeholder/text = "host"
+placeholder/alpha = 0.6
+expand_to_len = false
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Button" type="Button" parent="Panel/config"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 464.0
+margin/top = 0.0
+margin/right = 528.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Connect"
+flat = false
+
+[node name="send" type="HBoxContainer" parent="Panel/config"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 2.0
+margin/left = 532.0
+margin/top = 0.0
+margin/right = 990.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="LineEdit" type="LineEdit" parent="Panel/config/send"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 411.0
+margin/bottom = 40.0
+placeholder/text = "Message to send..."
+placeholder/alpha = 0.6
+expand_to_len = false
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Button" type="Button" parent="Panel/config/send"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 415.0
+margin/top = 0.0
+margin/right = 458.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Send"
+flat = false
+
+[node name="msg" type="Control" parent="Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 20.0
+margin/top = 70.0
+margin/right = 1010.0
+margin/bottom = 570.0
+
+[node name="send" type="HBoxContainer" parent="Panel/msg"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 2.0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 990.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="LineEdit" type="LineEdit" parent="Panel/msg/send"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 943.0
+margin/bottom = 40.0
+placeholder/text = "Message to send..."
+placeholder/alpha = 0.6
+expand_to_len = false
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Button" type="Button" parent="Panel/msg/send"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 947.0
+margin/top = 0.0
+margin/right = 990.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Send"
+flat = false
+
+
