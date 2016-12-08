@@ -98,6 +98,7 @@ func do_connect():
 		var err = _tcp.connect(e_host.get_text(), int(e_port.get_text()))
 		if err == OK:
 			_connected = true
+			_waiting = true
 			l_log.add_text("Connecting via TCP to: " + ip_str + " : " + port)
 		else:
 			l_log.add_text("Failed to connect via TCP to: " + ip_str + " : " + port + " -> " + str(err))
@@ -123,7 +124,7 @@ func do_disconnect():
 		_udp.close()
 	l_log.add_text("Disconnected\n")
 	_connected = false
-	_waiting = true
+	_waiting = false
 	get_node("Panel/config/connect").set_pressed(false)
 
 func _on_send_pressed():
