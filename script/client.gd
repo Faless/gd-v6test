@@ -28,12 +28,12 @@ func _ready():
 	popup.add_item("IPV4")
 	popup.add_item("IPV6")
 	popup.add_item("ANY")
-	popup.connect("item_pressed", self, "_change_ip_type")
+	popup.connect("index_pressed", self, "_change_ip_type")
 	
 	popup = b_proto_type.get_popup()
 	popup.add_item("TCP")
 	popup.add_item("UDP")
-	popup.connect("item_pressed", self, "_change_proto_type")
+	popup.connect("index_pressed", self, "_change_proto_type")
 
 func _process(delta):
 	if proto == TCP:
