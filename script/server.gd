@@ -1,6 +1,7 @@
 extends Node
 
-enum {TCP, UDP}
+const TCP = 0
+const UDP = 1
 
 onready var b_ip_type = get_node("Panel/config/Mode")
 onready var b_proto_type = get_node("Panel/config/Proto")

@@ -2,7 +2,8 @@ extends Node
 
 const JOIN_MSG = "Someone joined"
 
-enum {TCP, UDP}
+const TCP = 0
+const UDP = 1
 
 onready var b_ip_type = get_node("Panel/config/Mode")
 onready var b_proto_type = get_node("Panel/config/Proto")
@@ -93,7 +94,9 @@ func _on_connect_pressed(pressed):
 func do_connect():
 	var host = e_host.get_text()
 	var port = e_port.get_text()
-	var ip_str = host if host.is_valid_ip_address() else host + " (" + IP.resolve_hostname(host, ip_type) + ") "
+	var ip_str = host
+	if not host.is_valid_ip_address():
+		ip_str = host + " (" + IP.resolve_hostname(host, ip_type) + ") "
 	if proto == TCP:
 		var err = _tcp.connect(e_host.get_text(), int(e_port.get_text()))
 		if err == OK:
