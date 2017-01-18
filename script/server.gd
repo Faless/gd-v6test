@@ -34,16 +34,17 @@ func _process(delta):
 	var msgs = []
 	if proto == TCP:
 		if _tcp.is_connection_available():
-			print("new client")
 			var stream = _tcp.take_connection()
 			var peer = PacketPeerStream.new()
 			peer.set_stream_peer(stream)
+			msgs.append("Client connected: " + str(stream.get_connected_host()) + ":" + str(stream.get_connected_port()))
 			_clients.append([peer, stream])
 		var i = 0
 		while i < _clients.size() and i >= 0:
 			var c = _clients[i]
 			# Disconnect dead clients
 			if c[1].get_status() != StreamPeerTCP.STATUS_CONNECTED and c[1].get_status() != StreamPeerTCP.STATUS_CONNECTING:
+				msgs.append("Client disconnected: " + str(c[1].get_connected_host()) + ":" + str(c[1].get_connected_port()))
 				_clients.remove(i)
 				i-=1
 				continue
@@ -132,14 +133,16 @@ func do_stop():
 func do_listen():
 	var port = e_port.get_text()
 	if proto == TCP:
-		var err = _tcp.listen(int(port))
+		var host = get_node("Panel/config/address/LineEdit").get_text()
+		var err = _tcp.listen(int(port), host)
 		if err == OK:
 			_connected = true
 			l_log.add_text("Listening on TCP port: " + port)
 		else:
 			l_log.add_text("Failed listen on TCP port: " + port + " -> " + str(err))
 	elif proto == UDP:
-		var err = _udp.listen(int(port))
+		var host = get_node("Panel/config/address/LineEdit").get_text()
+		var err = _udp.listen(int(port), host)
 		if err == OK:
 			_connected = true
 			l_log.add_text("Listening on UDP port:" + port)

@@ -48,6 +48,7 @@ alignment = 0
 
 [node name="host" type="HBoxContainer" parent="Panel/config"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
@@ -94,6 +95,7 @@ caret/caret_blink_speed = 0.65
 
 [node name="port" type="HBoxContainer" parent="Panel/config"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3

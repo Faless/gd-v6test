@@ -143,6 +143,7 @@ func _on_send_pressed():
 		else:
 			err =_tcp_p.put_var(data)
 	else:
+		_udp.set_send_address(e_host.get_text(), int(e_port.get_text()))
 		err = _udp.put_var(data)
 	if err != OK:
 		l_log.add_text("Unable to send: " + data + " -> " + str(err) + "\n")

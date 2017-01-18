@@ -54,7 +54,7 @@ size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 835.0
+margin/right = 415.0
 margin/bottom = 40.0
 alignment = 0
 
@@ -82,9 +82,55 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 30.0
 margin/top = 0.0
-margin/right = 835.0
+margin/right = 415.0
 margin/bottom = 40.0
 text = "5342"
+placeholder/text = "port"
+placeholder/alpha = 0.6
+expand_to_len = false
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="address" type="HBoxContainer" parent="Panel/config"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 419.0
+margin/top = 0.0
+margin/right = 834.0
+margin/bottom = 40.0
+alignment = 0
+
+[node name="Label" type="Label" parent="Panel/config/address"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 13.0
+margin/right = 85.0
+margin/bottom = 27.0
+text = "Bind Address"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/config/address"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 89.0
+margin/top = 0.0
+margin/right = 415.0
+margin/bottom = 40.0
+text = "*"
 placeholder/text = "host"
 placeholder/alpha = 0.6
 expand_to_len = false
@@ -98,9 +144,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 839.0
+margin/left = 838.0
 margin/top = 0.0
-margin/right = 890.0
+margin/right = 889.0
 margin/bottom = 40.0
 toggle_mode = true
 enabled_focus_mode = 2
@@ -114,9 +160,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 894.0
+margin/left = 893.0
 margin/top = 0.0
-margin/right = 951.0
+margin/right = 950.0
 margin/bottom = 40.0
 toggle_mode = false
 click_on_press = true
@@ -132,9 +178,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 955.0
+margin/left = 954.0
 margin/top = 0.0
-margin/right = 990.0
+margin/right = 989.0
 margin/bottom = 40.0
 toggle_mode = false
 click_on_press = true
@@ -159,6 +205,7 @@ margin/bottom = 30.0
 
 [node name="send" type="HBoxContainer" parent="Panel/msg"]
 
+editor/display_folded = true
 anchor/right = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
